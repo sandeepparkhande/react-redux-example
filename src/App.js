@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
-function App() {
+import { Search } from "./Search";
+import { ProductList } from "./ProductList";
+import { Product } from "./Product";
+import { connect } from "react-redux";
+
+//const store = createStore(rootRedcucer);
+
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Learn React
+      <Search></Search>
+      <ProductList></ProductList>
+      <Product></Product>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return { products: state.products };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // dispatching plain actions
+    increment: () => dispatch({ type: "INCREMENT" }),
+    decrement: () => dispatch({ type: "DECREMENT" }),
+    reset: () => dispatch({ type: "RESET" }),
+  };
+};
+connect(mapStateToProps, mapDispatchToProps)(App);
