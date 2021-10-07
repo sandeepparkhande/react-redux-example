@@ -17,3 +17,17 @@ export const retrive = (payload) => {
     payload: payload,
   };
 };
+
+export const removeProduct = (payload) => {
+  return {
+    type: "REMOVEPRODUCT",
+    payload: payload,
+  };
+};
+
+export const findRecord = (payload) => {
+  return {
+    type: "FINDRECORD",
+    payload: payload.target.value,
+  };
+};

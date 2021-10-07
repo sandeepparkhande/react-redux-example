@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
     decrement: () => dispatch({ type: "DECREMENT" }),
     retrive: () => dispatch({ type: "RETRIVE" }),
     reset: () => dispatch({ type: "RESET" }),
+    removeProduct: () => dispatch({ type: "REMOVEPRODUCT" }),
   };
 };
 connect(mapStateToProps, mapDispatchToProps)(App);
