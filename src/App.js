@@ -5,8 +5,6 @@ import { ProductList } from "./ProductList";
 import { Product } from "./Product";
 import { connect } from "react-redux";
 
-//const store = createStore(rootRedcucer);
-
 export default function App() {
   return (
     <div className="App">
@@ -27,6 +25,7 @@ const mapDispatchToProps = (dispatch) => {
     // dispatching plain actions
     increment: () => dispatch({ type: "INCREMENT" }),
     decrement: () => dispatch({ type: "DECREMENT" }),
+    retrive: () => dispatch({ type: "RETRIVE" }),
     reset: () => dispatch({ type: "RESET" }),
   };
 };
