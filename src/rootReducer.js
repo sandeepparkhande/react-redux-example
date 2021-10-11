@@ -30,7 +30,7 @@ export const rootRedcucer = (state = intitalState, action) => {
   }
   if (action.type === "REMOVEPRODUCT") {
     const index = newState.products.findIndex(
-      (product) => product.id === action.payload
+      (product) => product.id === parseInt(action.payload)
     );
     newState.products.splice(index, 1);
     return newState;
