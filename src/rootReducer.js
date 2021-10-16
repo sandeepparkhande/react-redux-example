@@ -1,5 +1,6 @@
 const intitalState = {
   products: [],
+  cartProductList: [],
   counter: 0,
   searchProducts: [],
   searchFlag: false,
@@ -33,6 +34,15 @@ export const rootRedcucer = (state = intitalState, action) => {
       (product) => product.id === parseInt(action.payload)
     );
     newState.products.splice(index, 1);
+    return newState;
+  }
+
+  if (action.type === "ADDPRODUCT") {
+    const index = newState.products.findIndex(
+      (product) => product.id === parseInt(action.payload)
+    );
+    const product = newState.products.splice(index, 1);
+    newState.cartProductList.push(product);
     return newState;
   }
   if (action.type === "FINDRECORD") {

@@ -1,5 +1,5 @@
-import { useSelector, useDispatch } from "react-redux";
-import { removeProduct } from "./action";
+import { useDispatch } from "react-redux";
+import { addProduct, removeProduct } from "./action";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Product = (props) => {
@@ -19,20 +19,33 @@ export const Product = (props) => {
         <div class="card-body">
           <div class="d-flex align-items-start justify-content-between">
             <div class="d-flex flex-column">
-              <div class="h6 font-weight-bold">{product?.title}</div>
-              <div class="text-muted">${product?.price}</div>
+              <div class="font-weight-bold text-center">{product?.title}</div>
+              <div class="h6 font-weight-bold d-flex justify-content-center">
+                ${product?.price}
+              </div>
             </div>
-            <div class="btn">
-              <span class="far fa-heart">
-                <a
-                  href="#"
-                  onClick={() => dispatch(removeProduct(product?.id))}
-                  class="btn btn-primary"
-                >
-                  Remove
-                </a>
-              </span>
-            </div>
+          </div>
+          <div class="btn">
+            <span class="far fa-heart">
+              <a
+                href="#"
+                onClick={() => dispatch(addProduct(product?.id))}
+                class="btn btn-primary"
+              >
+                Add to Cart
+              </a>
+            </span>
+          </div>
+          <div class="btn">
+            <span class="far fa-heart">
+              <a
+                href="#"
+                onClick={() => dispatch(removeProduct(product?.id))}
+                class="btn btn-danger"
+              >
+                Remove
+              </a>
+            </span>
           </div>
         </div>
       </div>

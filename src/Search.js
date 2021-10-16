@@ -1,27 +1,31 @@
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { findRecord } from "./action";
+import { BsMinecart } from "react-icons/bs";
 
 export const Search = () => {
-  const { counter, products } = useSelector((state) => state);
+  const { counter, cartProductList, products } = useSelector((state) => state);
   const dispatch = useDispatch();
   console.log(" state ", counter);
   console.log(" products ", products);
 
   return (
-    <div class="input-group md-form form-sm form-2 pl-0">
+    <form class="d-flex">
+      <div className="form-inline my-2 my-lg-0">
+        <span id="lblCartCount">{cartProductList.length} </span>
+        <span id="lblCartCount">
+          <BsMinecart size="1em" />
+        </span>
+      </div>
       <input
-        class="form-control my-0 py-1 lime-border"
-        type="text"
+        class="form-control me-2"
+        type="search"
         placeholder="Search"
         aria-label="Search"
         onChange={(e) => dispatch(findRecord(e))}
       />
-      <div class="input-group-append">
-        <span class="input-group-text lime lighten-2" id="basic-text1">
-          <i class="fas fa-search text-grey" aria-hidden="true"></i>
-        </span>
-      </div>
-    </div>
+      <button class="btn btn-outline-light" type="submit">
+        Search
+      </button>
+    </form>
   );
 };

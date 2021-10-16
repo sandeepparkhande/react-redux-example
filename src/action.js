@@ -25,6 +25,13 @@ export const removeProduct = (payload) => {
   };
 };
 
+export const addProduct = (payload) => {
+  return {
+    type: "ADDPRODUCT",
+    payload: payload,
+  };
+};
+
 export const findRecord = (payload) => {
   return {
     type: "FINDRECORD",

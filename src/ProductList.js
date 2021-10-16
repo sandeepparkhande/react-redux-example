@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment, removeProduct, retrive } from "./action";
+import { retrive } from "./action";
 import { Product } from "./Product";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { fetchData } from "./service";
 
 export const ProductList = () => {
   let { counter, products, searchFlag, searchProducts } = useSelector(
@@ -25,6 +26,12 @@ export const ProductList = () => {
 
   console.log(" searchProducts ", products);
   useEffect(() => {
+    (async () => {
+      let response = await fetchData("https://fakestoreapi.com/products");
+      dispatch(retrive(response));
+    })();
+
+    /*
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((response) => dispatch(retrive(response)))
@@ -46,17 +53,18 @@ export const ProductList = () => {
           ])
         );
       });
+      */
   }, []);
 
   return (
     <div class="container mt-3">
       <div class="d-flex align-items-center justify-content-between py-4 results">
-        <div>Showing 1-40 of 350</div>
+        <div>Showing 1 of {products.length}</div>
         <div>
           <span>Price: </span>
           <select name="price" id="price">
             <option defaultValue="l2h">low to high</option>
-            <option value="l2h">high to low</option>
+            <option value="h2l">high to low</option>
           </select>
         </div>
       </div>
